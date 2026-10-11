@@ -38,6 +38,7 @@ Não depende de nenhuma outra etapa. É a base de tudo o que vem depois.
 - Criar um construtor que receba e inicialize os três atributos.
 - Criar os métodos acessores (getters e setters) para cada atributo.
 - Não implementar nenhuma lógica de negócio aqui — `Usuario` é só o modelo de dados.
+- Instanciar um usuário na classe Main.
 
 ### Passo 2 — `feature/DEV-002`: Cadastro de usuário
 
