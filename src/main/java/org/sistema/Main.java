@@ -13,6 +13,5 @@ public class Main {
 
         //FILTRAR POR USUARIOS MAIORES DE IDADE
 
-        //BUSCAR POR USUARIO ATRAVES DO CPF
     }
 }

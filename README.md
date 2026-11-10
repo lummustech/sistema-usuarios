@@ -55,18 +55,16 @@ Não depende de nenhuma outra etapa. É a base de tudo o que vem depois.
 
 Depende da **Tarefa 1** já estar mesclada na `main` (precisa da classe `Usuario` pronta).
 
-- Em `UsuarioService`, criar uma estrutura interna para armazenar os usuários em memória (ex.: uma lista).
-- Implementar o método responsável por cadastrar um novo usuário, adicionando-o a essa estrutura.
-- Em `Main.java`, no bloco `//CRIAR USUARIO`, instanciar o `UsuarioService`, criar alguns objetos `Usuario` e cadastrá-los através do método criado.
-- Usar `System.out.println();` para exibir os usuários.
+- Criar a classe `UsuarioService` no seu devido package, criar uma estrutura interna para armazenar os usuários em memória (ex.: uma lista).
+- Chamar essa classe de serviço na main para fazer o devido cadastro dos usuários já criados na main
+- Usar uma ferramenta de laço para exibir os nomes dos usuários cadastrados.
 
 ### Tarefa 3 — `feature/DEV-003`: Listagem e filtro de maiores de idade (David)
 
 Depende das **Tarefas 1 e 2** já estarem mescladas na `main` (precisa do modelo `Usuario` e da estrutura de armazenamento criada no `UsuarioService`).
 
-- Implementar em `UsuarioService` o método que lista todos os usuários cadastrados.
 - Implementar em `UsuarioService` o método que filtra e retorna apenas os usuários maiores de idade (idade >= 18).
-- Em `Main.java`, usar esses métodos nos blocos `//LISTAR USUARIOS CADASTRADOS` e `//FILTRAR POR USUARIOS MAIORES DE IDADE`, exibindo o resultado no console.
+- Em `Main.java`, usar o método `//FILTRAR POR USUARIOS MAIORES DE IDADE`, exibindo o resultado no console com o nome do usuário maior de idade.
 
 ## Git e GitHub
 
