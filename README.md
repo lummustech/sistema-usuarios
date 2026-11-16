@@ -38,9 +38,9 @@ Cada pessoa fica responsável por **uma tarefa**, desenvolvida na sua própria b
 | Chris       | `feature/DEV-001` | Modelagem da classe `Usuario`                 |
 | André       | `feature/DEV-002` | Cadastro de usuário                           |
 | David       | `feature/DEV-003` | Listagem e filtro de maiores de idade         |
-| A definir   | `feature/DEV-004` | Validação de nome, idade e CPF no cadastro    |
-| A definir   | `feature/DEV-005` | Impedir cadastro com CPF duplicado            |
-| A definir   | `feature/DEV-006` | Impedir cadastro de menores de 5 anos         |
+| André  | `feature/DEV-004` | Validação de nome, idade e CPF no cadastro    |
+| Chris   | `feature/DEV-005` | Impedir cadastro com CPF duplicado            |
+| David   | `feature/DEV-006` | Impedir cadastro de menores de 5 anos         |
 
 **As tarefas têm dependência entre si** — a etapa seguinte precisa da anterior já mesclada na `main`. Siga a ordem: DEV-001 → DEV-002 → DEV-003 → DEV-004 → DEV-005 → DEV-006. Antes de começar, confirme que as tarefas anteriores já foram mescladas na `main` e atualize sua branch (veja [Atualizando sua branch](#atualizando-sua-branch-com-a-main)).
 
