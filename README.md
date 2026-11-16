@@ -38,8 +38,11 @@ Cada pessoa fica responsável por **uma tarefa**, desenvolvida na sua própria b
 | Chris       | `feature/DEV-001` | Modelagem da classe `Usuario`                 |
 | André       | `feature/DEV-002` | Cadastro de usuário                           |
 | David       | `feature/DEV-003` | Listagem e filtro de maiores de idade         |
+| A definir   | `feature/DEV-004` | Validação de nome, idade e CPF no cadastro    |
+| A definir   | `feature/DEV-005` | Impedir cadastro com CPF duplicado            |
+| A definir   | `feature/DEV-006` | Impedir cadastro de menores de 5 anos         |
 
-**As tarefas têm dependência entre si** — a etapa seguinte precisa da anterior já mesclada na `main`. Siga a ordem: DEV-001 → DEV-002 → DEV-003. Antes de começar, confirme que as tarefas anteriores já foram mescladas na `main` e atualize sua branch (veja [Atualizando sua branch](#atualizando-sua-branch-com-a-main)).
+**As tarefas têm dependência entre si** — a etapa seguinte precisa da anterior já mesclada na `main`. Siga a ordem: DEV-001 → DEV-002 → DEV-003 → DEV-004 → DEV-005 → DEV-006. Antes de começar, confirme que as tarefas anteriores já foram mescladas na `main` e atualize sua branch (veja [Atualizando sua branch](#atualizando-sua-branch-com-a-main)).
 
 ### Tarefa 1 — `feature/DEV-001`: Modelagem da classe `Usuario` (Chris)
 
@@ -65,6 +68,31 @@ Depende das **Tarefas 1 e 2** já estarem mescladas na `main` (precisa do modelo
 
 - Implementar em `UsuarioService` o método que filtra e retorna apenas os usuários maiores de idade (idade >= 18).
 - Em `Main.java`, usar o método `//FILTRAR POR USUARIOS MAIORES DE IDADE`, exibindo o resultado no console com o nome do usuário maior de idade.
+
+### Tarefa 4 — `feature/DEV-004`: Validação de nome, idade e CPF (André)
+
+- No cadastro de usuário (`UsuarioService`), rejeitar o cadastro quando:
+  - o `nome` for vazio;
+  - a `idade` for negativa ou maior que 150;
+  - o `cpf` não tiver exatamente 11 dígitos numéricos.
+- O usuário rejeitado **não** deve ser adicionado à lista.
+- Em `Main.java`, tentar cadastrar usuários inválidos e exibir no console o motivo da rejeição.
+
+### Tarefa 5 — `feature/DEV-005`: Impedir CPF duplicado (Chris)
+
+Depende da **Tarefa 4** já estar mesclada na `main`.
+
+- No cadastro de usuário, impedir que dois usuários tenham o mesmo `cpf`.
+- Ao tentar cadastrar um CPF já existente, o cadastro deve devolver uma mensagem informando que o CPF já existe.
+- Em `Main.java`, tentar cadastrar um usuário com CPF repetido e exibir a mensagem no console.
+
+### Tarefa 6 — `feature/DEV-006`: Impedir cadastro de menores de 5 anos (David)
+
+Depende da **Tarefa 5** já estar mesclada na `main`.
+
+- No cadastro de usuário, impedir o cadastro de usuários com menos de 5 anos de idade.
+- Ao tentar cadastrar um usuário nessa condição, o cadastro deve devolver uma mensagem informando o motivo da rejeição.
+- Em `Main.java`, tentar cadastrar um usuário com menos de 5 anos e exibir a mensagem no console.
 
 ## Git e GitHub
 
