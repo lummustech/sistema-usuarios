@@ -18,4 +18,16 @@ public class UsuarioService {
             System.out.println(u.getNome());
         }
     }
+
+    public void filtrarMaiorIdade() {
+        System.out.println("\nUsuários maiores de idade:");
+        System.out.println("--------------------------");
+        for (Usuario u : usuarios) {
+            if(u.getIdade() >= 18){
+                System.out.println(u.getNome());
+            }
+        }
+        System.out.println("--------------------------");
+    }
+
 }

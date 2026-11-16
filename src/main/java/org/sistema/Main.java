@@ -20,6 +20,6 @@ public class Main {
         usuarioService.listarUsuario();
 
         // FILTRAR POR USUARIOS MAIORES DE IDADE
-
+        usuarioService.filtrarMaiorIdade();
     }
 }
