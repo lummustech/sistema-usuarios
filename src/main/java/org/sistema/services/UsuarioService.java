@@ -9,8 +9,19 @@ public class UsuarioService {
 
     private List<Usuario> usuarios = new ArrayList<>();
 
-    public void cadastrarUsuario(Usuario usuario) {
+    public String cadastrarUsuario(Usuario usuario) {
+        if (usuario.getNome() == null || usuario.getNome().isBlank()) {
+            return "Nome do usuário é obrigatório.";
+        }
+        if (usuario.getIdade() == null || usuario.getIdade() < 0 || usuario.getIdade() > 150) {
+            return "Idade inválida: deve estar entre 0 e 150.";
+        }
+        if (usuario.getCpf() == null || !usuario.getCpf().matches("\\d{11}")) {
+            return "CPF inválido: deve ter 11 dígitos numéricos.";
+        }
         usuarios.add(usuario);
+        return "Usuário cadastrado com sucesso.";
+        
     }
 
     public void listarUsuario() {

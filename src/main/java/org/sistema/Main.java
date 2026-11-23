@@ -12,9 +12,17 @@ public class Main {
 
         UsuarioService usuarioService = new UsuarioService();
 
-        usuarioService.cadastrarUsuario(ana);
-        usuarioService.cadastrarUsuario(cris);
-        usuarioService.cadastrarUsuario(paulo);
+        System.out.println(usuarioService.cadastrarUsuario(ana));
+        System.out.println(usuarioService.cadastrarUsuario(cris));
+        System.out.println(usuarioService.cadastrarUsuario(paulo));
+
+        Usuario semNome = new Usuario("", 20, "12345678901");
+        Usuario idadeInvalida = new Usuario("Teste", 200, "12345678901");
+        Usuario cpfCurto = new Usuario("Teste", 30, "123");
+
+        System.out.println(usuarioService.cadastrarUsuario(semNome));
+        System.out.println(usuarioService.cadastrarUsuario(idadeInvalida));
+        System.out.println(usuarioService.cadastrarUsuario(cpfCurto));
 
         // LISTAR USUARIOS CADASTRADOS
         usuarioService.listarUsuario();
