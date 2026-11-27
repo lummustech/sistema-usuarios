@@ -41,8 +41,11 @@ Cada pessoa fica responsável por **uma tarefa**, desenvolvida na sua própria b
 | André  | `feature/DEV-004` | Validação de nome, idade e CPF no cadastro    |
 | Chris   | `feature/DEV-005` | Impedir cadastro com CPF duplicado            |
 | David   | `feature/DEV-006` | Impedir cadastro de menores de 5 anos         |
+| David       | `feature/DEV-007` | Estrutura do cartão de transporte público     |
+| André       | `feature/DEV-008` | Interface `ValidaCartao` e `CartaoEstudante`  |
+| Chris       | `feature/DEV-009` | `CartaoInfantil`                              |
 
-**As tarefas têm dependência entre si** — a etapa seguinte precisa da anterior já mesclada na `main`. Siga a ordem: DEV-001 → DEV-002 → DEV-003 → DEV-004 → DEV-005 → DEV-006. Antes de começar, confirme que as tarefas anteriores já foram mescladas na `main` e atualize sua branch (veja [Atualizando sua branch](#atualizando-sua-branch-com-a-main)).
+**As tarefas têm dependência entre si** — a etapa seguinte precisa da anterior já mesclada na `main`. Siga a ordem: DEV-001 → DEV-002 → DEV-003 → DEV-004 → DEV-005 → DEV-006 → DEV-007 → DEV-008 → DEV-009. Antes de começar, confirme que as tarefas anteriores já foram mescladas na `main` e atualize sua branch (veja [Atualizando sua branch](#atualizando-sua-branch-com-a-main)).
 
 ### Tarefa 1 — `feature/DEV-001`: Modelagem da classe `Usuario` (Chris)
 
@@ -93,6 +96,45 @@ Depende da **Tarefa 5** já estar mesclada na `main`.
 - No cadastro de usuário, impedir o cadastro de usuários com menos de 5 anos de idade.
 - Ao tentar cadastrar um usuário nessa condição, o cadastro deve devolver uma mensagem informando o motivo da rejeição.
 - Em `Main.java`, tentar cadastrar um usuário com menos de 5 anos e exibir a mensagem no console.
+
+### Tarefa 7 — `feature/DEV-007`: Estrutura do cartão de transporte público (David)
+
+Depende da **Tarefa 6** já estar mesclada na `main`.
+
+- Criar os enums `TipoCartao` (`ESTUDANTE`, `IDOSO`, `COMUM`, `INFANTIL`) e `TipoUsuario` (`IDOSO`, `ADULTO`, `ADOLESCENTE`, `CRIANCA`) no package `model`.
+- Criar a classe `Cartao` no package `model` com os atributos privados: `id` (`Long`), `nomeCartao` (`String`), `numeroCartao` (`String`), `usuario` (`Usuario`) e `tipoCartao` (`TipoCartao`), com construtor e getters/setters.
+- Atualizar `Usuario` adicionando:
+  - o atributo `tipoUsuario` (`TipoUsuario`), definido a partir da idade (ex.: menos de 12 = `CRIANCA`, 12 a 17 = `ADOLESCENTE`, 18 a 59 = `ADULTO`, 60 ou mais = `IDOSO`), recalculado quando a idade mudar;
+  - a lista de cartões (`List<Cartao>`), iniciada vazia — relação de **1 usuário para N cartões**;
+  - um método `adicionarCartao(Cartao)` que adiciona o cartão à lista e define o usuário no cartão (mantendo os dois lados em sincronia).
+- O usuário **não é obrigado** a ter cartão: ele pode ser cadastrado sem nenhum e criar o cartão depois.
+- Criar `CartaoService` (package `services`) com o método `criarCartao(Usuario, Cartao)`, que gera o `id` do cartão (um contador em memória), vincula o cartão ao usuário e devolve uma mensagem de sucesso (mesmo padrão de retorno em `String` do `UsuarioService`).
+- Em `Main.java`, criar cartões para alguns usuários já cadastrados (não necessariamente todos) e exibir o resultado no console.
+
+### Tarefa 8 — `feature/DEV-008`: Interface `ValidaCartao` e `CartaoEstudante` (André)
+
+Depende da **Tarefa 7** já estar mesclada na `main`.
+
+- Criar, no package `services`, a interface `ValidaCartao` apenas com a assinatura `String validar(Usuario usuario)`. O retorno é `null` quando o usuário está apto e a mensagem de erro quando não está.
+- Criar a classe de serviço `CartaoEstudante`, que implementa `ValidaCartao`. No método `validar`, aplicar as regras:
+  - o usuário só pode ter **um cartão** do tipo `ESTUDANTE`;
+  - o usuário deve ter **15 anos ou mais**;
+  - o `tipoUsuario` deve ser `ADOLESCENTE`.
+- Se passar nas três, o usuário está apto. Caso contrário, devolver uma mensagem especificando qual foi o problema.
+- Em `CartaoService`, usar o validador correspondente ao tipo do cartão (sugestão: um `Map<TipoCartao, ValidaCartao>`) antes de criar o cartão — é aqui que o polimorfismo é utilizado. Tipos sem validador (`COMUM` e `IDOSO`) são aceitos direto.
+- Em `Main.java`, testar a criação de cartão `ESTUDANTE` com um usuário apto e com usuários que quebrem cada regra, exibindo as mensagens no console.
+
+### Tarefa 9 — `feature/DEV-009`: `CartaoInfantil` (Chris)
+
+Depende da **Tarefa 8** já estar mesclada na `main` (precisa da interface `ValidaCartao` e do `CartaoService`).
+
+- Criar a classe de serviço `CartaoInfantil` no package `services`, implementando `ValidaCartao`. No método `validar`, aplicar as regras:
+  - o `tipoUsuario` deve ser `CRIANCA`;
+  - a idade deve estar **entre 5 e 8 anos** (inclusive);
+  - o usuário não pode ter mais de **um cartão** do tipo `INFANTIL`.
+- Se passar nas três, o usuário está apto. Caso contrário, devolver uma mensagem especificando qual foi o problema.
+- Registrar o `CartaoInfantil` no `CartaoService` para o tipo `INFANTIL`.
+- Em `Main.java`, testar a criação de cartão `INFANTIL` com uma criança apta e com usuários que quebrem cada regra, exibindo as mensagens no console.
 
 ## Git e GitHub
 
